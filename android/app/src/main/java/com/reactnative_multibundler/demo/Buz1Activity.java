@@ -21,9 +21,9 @@ public class Buz1Activity extends AsyncReactActivity {
     @Override
     protected RnBundle getBundle(){
         RnBundle bundle = new RnBundle();
-        bundle.scriptType = ScriptType.NETWORK;
-        bundle.scriptPath = "image.android.bundle";
-        bundle.scriptUrl = "http://192.168.174.175:8083/artifactory/android_local/image.android.zhanglei";
+        bundle.scriptType = ScriptType.ASSET;
+        bundle.scriptPath = "index.android.bundle";
+        bundle.scriptUrl = "index.android.bundle";
         return bundle;
     }
 
