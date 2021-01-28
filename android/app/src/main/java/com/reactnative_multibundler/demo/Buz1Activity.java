@@ -27,19 +27,19 @@ public class Buz1Activity extends AsyncReactActivity {
         return bundle;
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                startActivity(new Intent(Buz1Activity.this,Buz2Activity.class));
-            }
-        }).start();
-    }
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                try {
+//                    sleep(2000);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//                startActivity(new Intent(Buz1Activity.this,Buz2Activity.class));
+//            }
+//        }).start();
+//    }
 }

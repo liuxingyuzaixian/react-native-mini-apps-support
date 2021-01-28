@@ -253,7 +253,8 @@ public class FileUtils {
     }
 
     public static String getPackageFolderPath(Context context,String packageHash) {
-        return appendPathComponent(getRNCodePath(context), packageHash);
+        return context.getExternalFilesDir("").getPath();
+//        return appendPathComponent(getRNCodePath(context), packageHash);
     }
 
     public static String getCurrentPackageMd5(Context context) {
