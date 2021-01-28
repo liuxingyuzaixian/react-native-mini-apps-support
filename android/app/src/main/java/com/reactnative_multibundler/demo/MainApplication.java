@@ -1,6 +1,7 @@
 package com.reactnative_multibundler.demo;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
@@ -23,46 +24,52 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 public class MainApplication extends Application implements ReactApplication {
+    private static Context context;
 
-  private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
+    private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
+        @Override
+        public boolean getUseDeveloperSupport() {
+            return ScriptLoadUtil.MULTI_DEBUG;//是否是debug模式
+        }
+
+        @Override
+        protected List<ReactPackage> getPackages() {
+            return Arrays.<ReactPackage>asList(
+                    new MainReactPackage(),
+                    new RNSmartassetsPackage(),
+                    new RNCMaskedViewPackage(),
+                    new RNGestureHandlerPackage(),
+                    new ReanimatedPackage(),
+                    new SafeAreaContextPackage(),
+                    new RNScreensPackage()
+            );
+        }
+
+        @Nullable
+        @Override
+        protected String getBundleAssetName() {
+            return "platform.android.bundle";
+        }
+
+        @Override
+        protected String getJSMainModuleName() {
+            return "MultiDenugEntry";
+        }
+    };
+
     @Override
-    public boolean getUseDeveloperSupport() {
-      return ScriptLoadUtil.MULTI_DEBUG;//是否是debug模式
+    public ReactNativeHost getReactNativeHost() {
+        return mReactNativeHost;
     }
 
     @Override
-    protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(
-          new MainReactPackage(),
-              new RNSmartassetsPackage(),
-              new RNCMaskedViewPackage(),
-              new RNGestureHandlerPackage(),
-              new ReanimatedPackage(),
-              new SafeAreaContextPackage(),
-              new RNScreensPackage()
-      );
+    public void onCreate() {
+        super.onCreate();
+        SoLoader.init(this, /* native exopackage */ false);
+        context = getApplicationContext();
     }
 
-    @Nullable
-    @Override
-    protected String getBundleAssetName() {
-      return "platform.android.bundle";
+    public static Context getContext() {
+        return context;
     }
-
-    @Override
-    protected String getJSMainModuleName() {
-      return "MultiDenugEntry";
-    }
-  };
-
-  @Override
-  public ReactNativeHost getReactNativeHost() {
-    return mReactNativeHost;
-  }
-
-  @Override
-  public void onCreate() {
-    super.onCreate();
-    SoLoader.init(this, /* native exopackage */ false);
-  }
 }

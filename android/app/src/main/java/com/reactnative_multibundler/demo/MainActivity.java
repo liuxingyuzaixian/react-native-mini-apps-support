@@ -24,6 +24,12 @@ public class MainActivity extends Activity {
         //事先加载基础包可以减少后面页面加载的时间，但相应的会增加内存使用
         // 当然也可以不用事先加载基础包，AsyncReactActivity中已经包含了这个逻辑，如果判断出没加载基础包会先加载基础包再加载业务包
         //请根据自己的需求使用
+        findViewById(R.id.btn_go_buz0).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {//点击进入rn业务1
+                startActivity(new Intent(MainActivity.this,BuzActivity.class));
+            }
+        });
         findViewById(R.id.btn_go_buz1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {//点击进入rn业务1
