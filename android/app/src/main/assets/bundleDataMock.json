@@ -6,12 +6,17 @@
   },
   {
     "mainComponentName": "reactnative_multibundler2",
-    "scriptPath": "index2.android.bundle",
-    "SCRIPT_URL": "http://192.168.174.175:8083/artifactory/android_local/index2.android.bundle.zip"
+    "scriptPath": "b.android.bundle",
+    "SCRIPT_URL": "http://192.168.174.175:8083/artifactory/android_local/b.android.bundle.zip"
   },
   {
     "mainComponentName": "reactnative_multibundler",
     "scriptPath": "c.android.bundle",
     "SCRIPT_URL": "http://192.168.174.175:8083/artifactory/android_local/c.android.bundle.zip"
+  },
+  {
+    "mainComponentName": "reactnative_multibundlerd",
+    "scriptPath": "d.android.bundle",
+    "SCRIPT_URL": "http://192.168.174.175:8083/artifactory/android_local/d.android.bundle.zip"
   }
 ]

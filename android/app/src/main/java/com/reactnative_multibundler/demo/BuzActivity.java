@@ -30,7 +30,7 @@ public class BuzActivity extends AsyncReactActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (BundleLoadingBusinessManager.getInstance().getCurrentIndex()==0){
+        if (BundleLoadingBusinessManager.getInstance().getCurrentIndex()<BundleLoadingBusinessManager.getInstance().getJsonList().size()-1){
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -39,7 +39,7 @@ public class BuzActivity extends AsyncReactActivity {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    BundleLoadingBusinessManager.getInstance().setCurrentIndex(1);
+                    BundleLoadingBusinessManager.getInstance().setCurrentIndex(BundleLoadingBusinessManager.getInstance().getCurrentIndex()+1);
                     startActivity(new Intent(BuzActivity.this,BuzActivity.class));
                 }
             }).start();

@@ -26,9 +26,13 @@ public class BundleLoadingBusinessManager {
         return instance;
     }
 
-    public BundleModel getCurrentBundleModel() {
+    public List<BundleModel> getJsonList() {
         String json = FileUtils.getJson("bundleDataMock.json", MainApplication.getContext());
-        List<BundleModel> list = new Gson().fromJson(json, new TypeToken<List<BundleModel>>() {}.getType());
-        return list.get(currentIndex);
+        return new Gson().fromJson(json, new TypeToken<List<BundleModel>>() {
+        }.getType());
+    }
+
+    public BundleModel getCurrentBundleModel() {
+        return getJsonList().get(currentIndex);
     }
 }
