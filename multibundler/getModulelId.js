@@ -1,5 +1,5 @@
 const pathSep = require('path').sep;
-const useIndex = true;//是否使用递增的数字作为模块的id，如果为false则使用模块相对的路径名作为模块id
+const useIndex = false;//是否使用递增的数字作为模块的id，如果为false则使用模块相对的路径名作为模块id
 let curModuleId = -100;//基础包ModuleId
 let curBuzModuleId = -100;//业务包ModuleId
 let baseModuleIdMap = [];
