@@ -27,26 +27,9 @@ public class MainActivity extends Activity {
         findViewById(R.id.btn_go_buz0).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {//点击进入rn业务1
-                BundleLoadingBusinessManager.getInstance().setCurrentIndex(0);
-                startActivity(new Intent(MainActivity.this,BuzActivity.class));
-            }
-        });
-        findViewById(R.id.btn_go_buz1).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {//点击进入rn业务1
-                startActivity(new Intent(MainActivity.this,Buz1Activity.class));
-            }
-        });
-        findViewById(R.id.btn_go_buz2).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {//点击进入rn业务2
-                startActivity(new Intent(MainActivity.this,Buz2Activity.class));
-            }
-        });
-        findViewById(R.id.btn_go_buz3).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {//点击进入rn业务3
-                startActivity(new Intent(MainActivity.this,Buz3Activity.class));
+                Intent intent=new Intent(MainActivity.this,BuzActivity.class);
+                intent.putExtra("asdf","adf");
+                startActivity(intent);
             }
         });
     }

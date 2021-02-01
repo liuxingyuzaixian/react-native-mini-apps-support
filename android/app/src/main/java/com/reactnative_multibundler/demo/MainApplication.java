@@ -3,6 +3,7 @@ package com.reactnative_multibundler.demo;
 import android.app.Application;
 import android.content.Context;
 
+import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -15,6 +16,7 @@ import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.swmansion.reanimated.ReanimatedPackage;
 import com.swmansion.rnscreens.RNScreensPackage;
 import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
+
 
 import org.reactnative.maskedview.RNCMaskedViewPackage;
 
@@ -34,15 +36,19 @@ public class MainApplication extends Application implements ReactApplication {
 
         @Override
         protected List<ReactPackage> getPackages() {
-            return Arrays.<ReactPackage>asList(
-                    new MainReactPackage(),
-                    new RNSmartassetsPackage(),
-                    new RNCMaskedViewPackage(),
-                    new RNGestureHandlerPackage(),
-                    new ReanimatedPackage(),
-                    new SafeAreaContextPackage(),
-                    new RNScreensPackage()
-            );
+            List<ReactPackage> packages = new PackageList(this).getPackages();
+            packages.add(new RNPackage());
+            return packages;
+//            return Arrays.<ReactPackage>asList(
+//                    new RNPackage(),
+//                    new MainReactPackage(),
+//                    new RNSmartassetsPackage(),
+//                    new RNCMaskedViewPackage(),
+//                    new RNGestureHandlerPackage(),
+//                    new ReanimatedPackage(),
+//                    new SafeAreaContextPackage(),
+//                    new RNScreensPackage()
+//            );
         }
 
         @Nullable

@@ -33,7 +33,7 @@ import javax.annotation.Nullable;
 /**
  * 异步加载业务bundle的activity
  */
-public abstract class AsyncReactActivity extends androidx.fragment.app.FragmentActivity
+public abstract class AsyncReactActivity extends BaseActivity
         implements DefaultHardwareBackBtnHandler, PermissionAwareActivity {
 
     public enum ScriptType {ASSET,FILE,NETWORK}
@@ -41,6 +41,7 @@ public abstract class AsyncReactActivity extends androidx.fragment.app.FragmentA
     private final ReactActivityDelegate mDelegate;
     protected boolean bundleLoaded = false;
     private AlertDialog mProgressDialog;
+    private ReactInstanceManager manager;
 
     protected AsyncReactActivity() {
         mDelegate = createReactActivityDelegate();
@@ -73,12 +74,17 @@ public abstract class AsyncReactActivity extends androidx.fragment.app.FragmentA
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        final ReactInstanceManager manager = ((ReactApplication)getApplication()).getReactNativeHost().getReactInstanceManager();
+        manager = ((ReactApplication)getApplication()).getReactNativeHost().getReactInstanceManager();
         if (!((ReactApplication)getApplication()).getReactNativeHost().getReactInstanceManager().hasStartedCreatingInitialContext()) {
             ((ReactApplication)getApplication()).getReactNativeHost().getReactInstanceManager().createReactContextInBackground();//这里会先加载基础包platform.android.bundle，也可以不加载
         }
+
+        loadScript();
+    }
+
+    public void loadScript(){
         if (!manager.hasStartedCreatingInitialContext()
-        ||ScriptLoadUtil.getCatalystInstance(getReactNativeHost())==null) {
+                ||ScriptLoadUtil.getCatalystInstance(getReactNativeHost())==null) {
             manager.addReactInstanceEventListener(new ReactInstanceManager.ReactInstanceEventListener() {
                 @Override
                 public void onReactContextInitialized(ReactContext context) {
@@ -104,7 +110,6 @@ public abstract class AsyncReactActivity extends androidx.fragment.app.FragmentA
                 }
             });
         }
-
     }
 
     protected abstract RnBundle getBundle();
@@ -234,6 +239,7 @@ public abstract class AsyncReactActivity extends androidx.fragment.app.FragmentA
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         mDelegate.onActivityResult(requestCode, resultCode, data);
     }
 

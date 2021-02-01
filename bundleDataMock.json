@@ -1,0 +1,22 @@
+[
+  {
+    "mainComponentName": "reactnative_multibundler",
+    "scriptPath": "android_1",
+    "SCRIPT_URL": "http://192.168.174.26:8083/artifactory/rn_wgt/android_1.wgt"
+  },
+  {
+    "mainComponentName": "reactnative_multibundler2",
+    "scriptPath": "android_2",
+    "SCRIPT_URL": "http://192.168.174.26:8083/artifactory/rn_wgt/android_2.wgt"
+  },
+  {
+    "mainComponentName": "reactnative_multibundler3",
+    "scriptPath": "android_3",
+    "SCRIPT_URL": "http://192.168.174.26:8083/artifactory/rn_wgt/android_3.wgt"
+  },
+  {
+    "mainComponentName": "reactnative_multibundler4",
+    "scriptPath": "android_4",
+    "SCRIPT_URL": "http://192.168.174.26:8083/artifactory/rn_wgt/android_4.wgt"
+  }
+]
